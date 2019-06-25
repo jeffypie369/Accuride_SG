@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
-///  This file contains common widgets that can be used across different pages
-///  of the application.
+//  This file contains common widgets that can be used across different pages
+//  of the application.
 
-class SearchBar extends StatefulWidget {
+// SearchContainer contains SearchBars and a Button
+class SearchContainer extends StatefulWidget {
   @override
-  SearchBarState createState() {
-    return SearchBarState();
+  _SearchContainerState createState() {
+    return _SearchContainerState();
   }
 }
 
-class SearchBarState extends State<SearchBar> {
+class _SearchContainerState extends State<SearchContainer> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -20,26 +21,49 @@ class SearchBarState extends State<SearchBar> {
         child: Column(
             children: <Widget>[
               TextFormField(
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return "Station name required";
-                    }
-                    return null;
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(25.0))
+                  ),
+                  prefixIcon: Icon(Icons.search),
+                  hintText: "Start"
+                ),
+
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "Station name required";
                   }
+                  return null;
+                }
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5.0),
+                child: const Text("")
               ),
               TextFormField(
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return "Station name required";
-                    }
-                    return null;
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(25.0))
+                  ),
+                  prefixIcon: Icon(Icons.search),
+                  hintText: "End"
+                ),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "Station name required";
                   }
+                  return null;
+                }
+              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5.0),
+                  child: const Text("")
               ),
               RaisedButton(
                 onPressed:() {
                   if (_formKey.currentState.validate()) {
                     Scaffold.of(context)
-                        .showSnackBar(SnackBar(content: Text('Processing Data')));
+                      .showSnackBar(SnackBar(content: Text('Processing Data')));
                   }
                 },
                 child: Text('Go'),
@@ -49,3 +73,33 @@ class SearchBarState extends State<SearchBar> {
     );
   }
 }
+
+//class SearchBar extends StatefulWidget {
+//  final String input;
+//
+//  SearchBar({this.input});
+//
+//  @override
+//  SearchBarState createState() => SearchBarState();
+//}
+//
+//class SearchBarState extends State<SearchBar> {
+//  @override
+//  Widget build(BuildContext context) {
+//    return TextFormField(
+//      decoration: new InputDecoration(
+//        border: OutlineInputBorder(
+//          borderRadius: BorderRadius.all(Radius.circular(25.0))
+//        ),
+//        prefixIcon: Icon(Icons.search),
+//        hintText: widget.input
+//      ),
+//      validator: (value) {
+//        if (value.isEmpty) {
+//        return "Station name required";
+//      }
+//      return null;
+//    }
+//    );
+//  }
+//}

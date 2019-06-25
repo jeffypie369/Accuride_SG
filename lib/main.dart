@@ -23,7 +23,11 @@ class MyHomePage extends StatelessWidget {
         body: Column(mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset("images/circle-logo.png"),
-            SearchBar()
+            // Container used to adjust the size of the search bar child inside
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal:70.0),
+              child: SearchContainer()
+            )
           ]
         ),
       ),
