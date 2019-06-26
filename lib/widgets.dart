@@ -20,41 +20,12 @@ class _SearchContainerState extends State<SearchContainer> {
         key: _formKey,
         child: Column(
             children: <Widget>[
-              TextFormField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0))
-                  ),
-                  prefixIcon: Icon(Icons.search),
-                  hintText: "Start"
-                ),
-
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return "Station name required";
-                  }
-                  return null;
-                }
-              ),
+              SearchBar(input:"Start"),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 5.0),
                 child: const Text("")
               ),
-              TextFormField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0))
-                  ),
-                  prefixIcon: Icon(Icons.search),
-                  hintText: "End"
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return "Station name required";
-                  }
-                  return null;
-                }
-              ),
+              SearchBar(input: "End"),
               Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.0),
                   child: const Text("")
@@ -74,32 +45,28 @@ class _SearchContainerState extends State<SearchContainer> {
   }
 }
 
-//class SearchBar extends StatefulWidget {
-//  final String input;
-//
-//  SearchBar({this.input});
-//
-//  @override
-//  SearchBarState createState() => SearchBarState();
-//}
-//
-//class SearchBarState extends State<SearchBar> {
-//  @override
-//  Widget build(BuildContext context) {
-//    return TextFormField(
-//      decoration: new InputDecoration(
-//        border: OutlineInputBorder(
-//          borderRadius: BorderRadius.all(Radius.circular(25.0))
-//        ),
-//        prefixIcon: Icon(Icons.search),
-//        hintText: widget.input
-//      ),
-//      validator: (value) {
-//        if (value.isEmpty) {
-//        return "Station name required";
-//      }
-//      return null;
-//    }
-//    );
-//  }
-//}
+// SearchBar for SearchContainer
+class SearchBar extends StatelessWidget {
+  SearchBar({Key key, this.input}) : super(key: key);
+
+  final String input;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: new InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(25.0))
+        ),
+        prefixIcon: Icon(Icons.search),
+        hintText: input
+      ),
+      validator: (value) {
+        if (value.isEmpty) {
+          return "Station Name Required";
+        }
+        return null;
+      }
+    );
+  }
+}

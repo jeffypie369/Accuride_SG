@@ -30,6 +30,7 @@ class MyHomePage extends StatelessWidget {
             )
           ]
         ),
+        // BottomAppBar or BottomNavigationBar
       ),
     );
   }
