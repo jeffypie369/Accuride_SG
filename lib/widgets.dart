@@ -19,27 +19,27 @@ class _SearchContainerState extends State<SearchContainer> {
     return Form(
         key: _formKey,
         child: Column(
-            children: <Widget>[
-              SearchBar(input:"Start"),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5.0),
-                child: const Text("")
-              ),
-              SearchBar(input: "End"),
-              Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.0),
-                  child: const Text("")
-              ),
-              RaisedButton(
-                onPressed:() {
-                  if (_formKey.currentState.validate()) {
-                    Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text('Processing Data')));
-                  }
-                },
-                child: Text('Go'),
-              )
-            ]
+          children: <Widget>[
+            SearchBar(input:"Start"),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5.0),
+              child: const Text("")
+            ),
+            SearchBar(input: "End"),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5.0),
+              child: const Text("")
+            ),
+            RaisedButton(
+              onPressed:() {
+                if (_formKey.currentState.validate()) {
+                  Scaffold.of(context)
+                    .showSnackBar(SnackBar(content: Text('Processing Data')));
+                }
+              },
+              child: Text('Go'),
+            )
+          ]
         )
     );
   }
